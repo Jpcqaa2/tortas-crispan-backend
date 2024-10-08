@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
     'rest_framework',
+    
 ]
+
+# Configuración del modelo de usuario personalizado
+AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'tortas_crispan_backend.urls'
+ROOT_URLCONF = 'tortas-crispan-backend.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'tortas_crispan_backend.wsgi.application'
+WSGI_APPLICATION = 'tortas-crispan-backend.wsgi.application'
 
 
 # Database
