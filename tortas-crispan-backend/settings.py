@@ -30,17 +30,24 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+BASE_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
-    'rest_framework',
-    
 ]
+
+LOCAL_APPS = [
+     'apps.users.apps.UsersConfig',
+]
+
+THIRD_APPS = [
+     'rest_framework',
+]
+
+INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
 
 # Configuración del modelo de usuario personalizado
 AUTH_USER_MODEL = 'users.CustomUser'
