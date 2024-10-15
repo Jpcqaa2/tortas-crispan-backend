@@ -160,7 +160,6 @@ class UpdateAndCreateUserSerializer(serializers.ModelSerializer):
     groups = serializers.PrimaryKeyRelatedField(
         queryset=Group.objects.all(),
         many=True,
-        default=2
     )
 
     class Meta:

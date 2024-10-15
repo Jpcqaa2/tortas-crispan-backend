@@ -19,6 +19,9 @@ from apps.users import serializers
 from django_filters.rest_framework import DjangoFilterBackend
 from apps.users.filter import UsersFilter
 
+# Swagger
+from drf_yasg.utils import swagger_auto_schema
+
 
 class UserViewSet(mixins.ListModelMixin, 
                   mixins.CreateModelMixin,
@@ -28,7 +31,7 @@ class UserViewSet(mixins.ListModelMixin,
                   viewsets.GenericViewSet):
 
     """
-    API de usuarios
+    API of users
     """
 
     queryset = User.objects.all()
@@ -36,9 +39,12 @@ class UserViewSet(mixins.ListModelMixin,
     filterset_class = UsersFilter
 
     def get_serializer_class(self):
-        if self.action in ['login']:
-            """ Cuando es 'login' se asigna un serializador dirente """
+        if self.action == 'login':
             return serializers.CustomTokenObtainPairSerializer
+        elif self.action == 'logout':
+            return serializers.RefreshTokenSerializer
+        if self.action in ['update', 'partial_update', 'create']:
+            return serializers.UpdateAndCreateUserSerializer
         return serializers.UserModelSerializer
 
     def get_permissions(self):
@@ -50,67 +56,67 @@ class UserViewSet(mixins.ListModelMixin,
         return [permission() for permission in permissions]
 
     def list(self, request, *args, **kwargs):
-        """ Listar usuarios
+        """ List users
 
-            Permite listar todos los usuarios registrados en el sistema.
+            Allows you to list all users registered in the system
         """
         return super().list(request, *args, **kwargs)
 
     def retrieve(self, request, *args, **kwargs):
-        """ Consultar usuario por ID
+        """ Consult user by ID
 
-            Permite obtener información de un usuario dado su ID
+            Allow you to obtain information about user given their ID
         """
         return super().retrieve(request, *args, **kwargs)
-
+    
+    @swagger_auto_schema(
+        responses={status.HTTP_201_CREATED: serializers.UserModelSerializer(many=False)})
     @transaction.atomic
     def create(self, request, *args, **kwargs):
-        """ Crear usuarios
+        """ Create users
 
-            Permite crear usuarios, los cuales podrán logearse en el sistema.
+            Allow you to crete users, who can log into the system.
         """
-        print("Entra aqui")
-        print("*** datos recibidos del usuario: ", request.data)
-        serializer = serializers.UpdateAndCreateUserSerializer(
+        serializer = self.get_serializer(
             data=request.data
         )
-        print("es valido?")
-        print(serializer.is_valid(raise_exception=True))
-
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-        data = self.get_serializer(instance=user).data
+        data = serializers.UserModelSerializer(instance=user).data
         return Response(data=data, status=status.HTTP_201_CREATED)
 
+    @swagger_auto_schema(
+        responses={status.HTTP_200_OK: serializers.UserModelSerializer(many=False)})
     @transaction.atomic
     def update(self, request, *args, **kwargs):
-        """ Actualizar usuarios
+        """ Update users
         
-            Perimite la actualización de un usuario dado su ID.
+            Allows you to update a user based on their ID
         """
-        print("*** datos recibidos del usuario: ", request.data)
         user = self.get_object()
-        serializer = serializers.UpdateAndCreateUserSerializer(
+        serializer = self.get_serializer(
             instance=user,
             data=request.data,
             partial=True
         )
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-        data = self.get_serializer(instance=user).data
-        return Response(data=data, status=status.HTTP_201_CREATED)
+        data = serializers.UserModelSerializer(instance=user).data
+        return Response(data=data, status=status.HTTP_200_OK)
 
     def perform_destroy(self, instance):
-        """Disable membership."""
+        """Disable user."""
         instance.is_active = False
         instance.save()
 
+    @swagger_auto_schema(
+        responses={status.HTTP_200_OK: serializers.UserLoginSerializer(many=False)})
     @action(detail=False, methods=['post'])
     def login(self, request):
-        """ Autenticar usuarios.
+        """ Authenticate users.
 
-            - Permite autenticar un usuario por medio de email y contraseña.
-            - En caso de éxito, retorna la información del usuario y del token de acceso.
+            - Allows you to authenticate a user by their email and password.
+            - In case of success, return the user information and access token.
         """
         serializer = self.get_serializer(
             data=request.data,
@@ -121,12 +127,14 @@ class UserViewSet(mixins.ListModelMixin,
         data = serializers.UserLoginSerializer(instance={'user': user, 'token': token}).data
         return Response(data, status=status.HTTP_200_OK)
 
+    @swagger_auto_schema(
+        responses={status.HTTP_204_NO_CONTENT: ''})
     @action(detail=False, methods=['post'])
     def logout(self, request):
-        """ Inhabilitar token de acceso a usuarios.
+        """ Disable access tokens for user.
 
-            - Permite inhabilitar el token de acceso del usuario.
-            - Este endpoint no retorna información.
+            - Allow you to disable user's access token.
+            - This endpoint does not return information.
         """
         serializer = serializers.RefreshTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -135,7 +143,7 @@ class UserViewSet(mixins.ListModelMixin,
     
     @action(detail=False, methods=['GET'])
     def password_validations(self, request):
-        """ Lista las validaciones de contraseña habilitadas. """
+        """ List of enabled password validations. """
         data = password_validation.password_validators_help_texts()
         return Response(data, status=status.HTTP_200_OK)
        
