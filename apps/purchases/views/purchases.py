@@ -63,6 +63,8 @@ class PurchaseViewSet(mixins.ListModelMixin,
         """
         return super().retrieve(request, *args, **kwargs)
 
+    @swagger_auto_schema(
+        responses={status.HTTP_201_CREATED: PurchasesModelSerializer(many=False)})
     @transaction.atomic
     def create(self, request, *args, **kwargs):
         """ Create purchase
@@ -74,6 +76,8 @@ class PurchaseViewSet(mixins.ListModelMixin,
         data = PurchasesModelSerializer(instance=serializer.save()).data
         return Response(data, status=status.HTTP_201_CREATED)
 
+    @swagger_auto_schema(
+        responses={status.HTTP_200_OK: PurchasesModelSerializer(many=False)})
     @transaction.atomic
     def update(self, request, *args, **kwargs):
         """ Update purchase
