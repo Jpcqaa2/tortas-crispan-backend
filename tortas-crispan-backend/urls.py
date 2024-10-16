@@ -46,4 +46,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # APPS URLS
     path('', include(('apps.users.urls', 'users'), namespace='users')),
+    path('', include(('apps.purchases.urls', 'purchases'), namespace='purchases')),
 ]
