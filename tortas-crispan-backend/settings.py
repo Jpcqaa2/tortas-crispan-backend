@@ -27,7 +27,15 @@ SECRET_KEY = 'django-insecure-&%0^89mk0e*g9s24&cm-)w2*^#y$luy9%c1vjh160=ty&8f4er
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1', 
+    'localhost',
+]
+
+CORS_ALLOWED_ORIGINS = [ 
+    'http://localhost:3000',
+    'https://sisgetc-frontend.vercel.app'
+]
 
 
 # Application definition
