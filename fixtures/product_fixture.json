@@ -1,0 +1,54 @@
+[
+    {
+        "model": "sales.products",
+        "pk": 1,
+        "fields": {
+            "name": "Torta Cebra REF 04",
+            "price": 30000,
+            "quantity": 1,
+            "category": 1 , 
+            "created": "2024-10-28T12:00:00Z",
+            "updated": "2024-10-28T12:00:00Z"
+
+        }
+    },
+    {
+        "model": "sales.products",
+        "pk": 2,
+        "fields": {
+            "name": "Galletas de Chocolate",
+            "price": 5000,
+            "quantity": 2,
+            "category": 2 ,
+            "created": "2024-10-28T12:00:00Z" ,
+            "updated": "2024-10-28T12:00:00Z"
+
+        }   
+    },
+    {
+        "model": "sales.products",
+        "pk": 3,
+        "fields": {
+            "name": "Muffin de Arándanos",
+            "price": 7000,
+            "quantity": 4,
+            "category": 3,
+            "created": "2024-10-28T12:00:00Z",
+            "updated": "2024-10-28T12:00:00Z"
+
+        }
+    },
+    {
+        "model": "sales.products",
+        "pk": 4,
+        "fields": {
+            "name": "Torta de Zanahoria",
+            "quantity": 1,
+            "price": 35000,
+            "category": 1 ,
+            "created": "2024-10-28T12:00:00Z",
+            "updated": "2024-10-28T12:00:00Z"
+
+        }
+    }
+]

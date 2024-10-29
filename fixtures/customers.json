@@ -1,0 +1,87 @@
+[
+    {
+        "model": "sales.customers",
+        "pk": 2,
+        "fields": {
+            "name": "Maria Gonzalez",
+            "identification_type": "CC",
+            "identification_number": "9876543210",
+            "cell_phone": "3007654321",
+            "email": "maria.gonzalez@example.com",
+            "birth_date": "1985-03-15",
+            "residential_address": "456 Avenida Principal",
+            "city": 2,
+            "is_active": true,
+            "created": "2024-10-02T11:30:00Z",
+            "updated": "2024-10-02T11:30:00Z"
+        }
+    },
+    {
+        "model": "sales.customers",
+        "pk": 3,
+        "fields": {
+            "name": "Carlos Martinez",
+            "identification_type": "TI",
+            "identification_number": "1357924680",
+            "cell_phone": "3101239876",
+            "email": "carlos.martinez@example.com",
+            "birth_date": "2000-07-25",
+            "residential_address": "789 Calle Secundaria",
+            "city": 3,
+            "is_active": true,
+            "created": "2024-10-03T14:20:00Z",
+            "updated": "2024-10-03T14:20:00Z"
+        }
+    },
+    {
+        "model": "sales.customers",
+        "pk": 4,
+        "fields": {
+            "name": "Ana Lopez",
+            "identification_type": "CE",
+            "identification_number": "1029384756",
+            "cell_phone": "3156781234",
+            "email": "ana.lopez@example.com",
+            "birth_date": "1995-11-05",
+            "residential_address": "321 Calle Central",
+            "city": 4,
+            "is_active": false,
+            "created": "2024-10-04T16:45:00Z",
+            "updated": "2024-10-04T16:45:00Z"
+        }
+    },
+    {
+        "model": "sales.customers",
+        "pk": 5,
+        "fields": {
+            "name": "Luis Rodriguez",
+            "identification_type": "CC",
+            "identification_number": "5647382910",
+            "cell_phone": "3182345678",
+            "email": "luis.rodriguez@example.com",
+            "birth_date": "1988-02-18",
+            "residential_address": "654 Calle Tercera",
+            "city": 5,
+            "is_active": true,
+            "created": "2024-10-05T09:15:00Z",
+            "updated": "2024-10-05T09:15:00Z"
+        }
+    },
+    {
+        "model": "sales.customers",
+        "pk": 6,
+        "fields": {
+            "name": "Patricia Sanchez",
+            "identification_type": "CC",
+            "identification_number": "6789012345",
+            "cell_phone": "3225678901",
+            "email": "patricia.sanchez@example.com",
+            "birth_date": "1993-12-22",
+            "residential_address": "987 Calle Cuarta",
+            "city": 6,
+            "is_active": true,
+            "created": "2024-10-06T13:50:00Z",
+            "updated": "2024-10-06T13:50:00Z"
+        }
+    }
+]
