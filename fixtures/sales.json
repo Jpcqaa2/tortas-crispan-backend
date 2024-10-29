@@ -1,0 +1,16 @@
+[
+    {
+        "model": "sales.sales",
+        "pk": 1,
+        "fields": {
+            "customer": 1,
+            "user": 1,
+            "payment_method": "1",
+            "sale_status": 1,
+            "total": "500.00",
+            "created": "2024-10-01T10:00:00Z",
+            "updated": "2024-10-01T10:00:00Z"
+            
+        }
+    }
+]

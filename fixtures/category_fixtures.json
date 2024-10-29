@@ -1,0 +1,42 @@
+[
+    {
+        "model": "sales.categories",
+        "pk": 1,
+        "fields": {
+            "name": "Tortas",
+            "description": "Categoría de tortas de diferentes tipos",
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "sales.categories",
+        "pk": 2,
+        "fields": {
+            "name": "Galletas",
+            "description": "Variedad de galletas dulces y saladas",
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "sales.categories",
+        "pk": 3,
+        "fields": {
+            "name": "Muffins",
+            "description": "Muffins de distintos sabores",
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "sales.categories",
+        "pk": 4,
+        "fields": {
+            "name": "Postres",
+            "description": "Postres variados",
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    }
+]
