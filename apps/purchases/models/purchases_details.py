@@ -3,14 +3,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from apps.utils.constants import MeasurementUnitChoices
 from apps.utils.models.base import DateBaseModel
-
-
-class MeasurmentUnitChoices(models.TextChoices):
-    GRAMO = '1',_('Gramos')
-    KILO_GRAMO = '2',_('Kilo Gramo')
-    LIBRA = '3',_('Libra')
-    LITRO = '4',_('Litro')
 
 
 class PurchasesDetails(DateBaseModel):
@@ -19,7 +13,7 @@ class PurchasesDetails(DateBaseModel):
     article = models.ForeignKey('purchases.Articles', on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
     unit_price = models.BigIntegerField(default=0)
-    measurment_unit = models.CharField(max_length=1, choices=MeasurmentUnitChoices.choices)
+    measurment_unit = models.CharField(max_length=1, choices=MeasurementUnitChoices.choices)
     subtotal = models.BigIntegerField(default=0)
   
     def __str__(self):
