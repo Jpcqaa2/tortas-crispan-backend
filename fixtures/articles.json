@@ -1,40 +1,44 @@
 [
     {
-        "model": "sales.categories",
+        "model": "purchases.articles",
         "pk": 1,
         "fields": {
-            "name": "Tortas",
-            "description": "Categoría de tortas de diferentes tipos",
+            "name": "MOLDES",
+            "presentation": "CAJAS",
+            "article_type": 1,
             "created": "2024-01-01T00:00:00Z",
             "updated": "2024-01-01T00:00:00Z"
         }
     },
     {
-        "model": "sales.categories",
+        "model": "purchases.articles",
         "pk": 2,
         "fields": {
-            "name": "Galletas",
-            "description": "Variedad de galletas dulces y saladas",
+            "name": "HARINA",
+            "presentation": "Bultos",
+            "article_type": 2,
             "created": "2024-01-01T00:00:00Z",
             "updated": "2024-01-01T00:00:00Z"
         }
     },
     {
-        "model": "sales.categories",
+        "model": "purchases.articles",
         "pk": 3,
         "fields": {
-            "name": "Muffins",
-            "description": "Muffins de distintos sabores",
+            "name": "HUEVOS",
+            "presentation": "Panales",
+            "article_type": 2,
             "created": "2024-01-01T00:00:00Z",
             "updated": "2024-01-01T00:00:00Z"
         }
     },
     {
-        "model": "sales.categories",
+        "model": "purchases.articles",
         "pk": 4,
         "fields": {
-            "name": "Postres",
-            "description": "Postres variados",
+            "name": "AZUCAR",
+            "presentation": "Bultos",
+            "article_type": 2,
             "created": "2024-01-01T00:00:00Z",
             "updated": "2024-01-01T00:00:00Z"
         }

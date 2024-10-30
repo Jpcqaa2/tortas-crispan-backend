@@ -1,6 +1,9 @@
-# apps/sales/models/sales_status.py
+
 from django.db import models
+
+# Utils
 from apps.utils.models.base import DateBaseModel
+
 
 class SalesStatus(DateBaseModel):
     """

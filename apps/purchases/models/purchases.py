@@ -3,13 +3,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from apps.utils.constants import PaymentMethodChoices
 from apps.utils.models.base import DateBaseModel
-
-
-class PaymentMethodChoices(models.TextChoices):
-    EFECTIVO = '1',_('EFECTIVO')
-    NEQUI = '2',_('NEQUI')
-    BANCOLOMBIA = '3',_('BANCOLOMBIA')
 
 
 class Purchases(DateBaseModel):

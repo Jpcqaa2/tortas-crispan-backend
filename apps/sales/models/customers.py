@@ -1,6 +1,8 @@
 # apps/sales/models/customers.py
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+# Utils
 from apps.utils.models.base import DateBaseModel
 
 class IdentificationTypeChoices(models.TextChoices):

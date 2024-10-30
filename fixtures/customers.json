@@ -1,9 +1,9 @@
 [
     {
         "model": "sales.customers",
-        "pk": 2,
+        "pk": 1,
         "fields": {
-            "name": "Maria Gonzalez",
+            "name": "MARIA CONGALEZ",
             "identification_type": "CC",
             "identification_number": "9876543210",
             "cell_phone": "3007654321",
@@ -18,9 +18,9 @@
     },
     {
         "model": "sales.customers",
-        "pk": 3,
+        "pk": 2,
         "fields": {
-            "name": "Carlos Martinez",
+            "name": "CARLOS MARTINEZ",
             "identification_type": "TI",
             "identification_number": "1357924680",
             "cell_phone": "3101239876",
@@ -35,9 +35,9 @@
     },
     {
         "model": "sales.customers",
-        "pk": 4,
+        "pk": 3,
         "fields": {
-            "name": "Ana Lopez",
+            "name": "ANA LOPEZ",
             "identification_type": "CE",
             "identification_number": "1029384756",
             "cell_phone": "3156781234",
@@ -52,9 +52,9 @@
     },
     {
         "model": "sales.customers",
-        "pk": 5,
+        "pk": 4,
         "fields": {
-            "name": "Luis Rodriguez",
+            "name": "LUIS ROFRIGUEZ",
             "identification_type": "CC",
             "identification_number": "5647382910",
             "cell_phone": "3182345678",
@@ -69,9 +69,9 @@
     },
     {
         "model": "sales.customers",
-        "pk": 6,
+        "pk": 5,
         "fields": {
-            "name": "Patricia Sanchez",
+            "name": "PATRICIA SANCHEZ",
             "identification_type": "CC",
             "identification_number": "6789012345",
             "cell_phone": "3225678901",
