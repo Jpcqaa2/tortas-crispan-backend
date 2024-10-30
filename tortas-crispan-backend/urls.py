@@ -47,4 +47,5 @@ urlpatterns = [
     # APPS URLS
     path('', include(('apps.users.urls', 'users'), namespace='users')),
     path('', include(('apps.purchases.urls', 'purchases'), namespace='purchases')),
+    path('', include(('apps.sales.urls', 'sales'), namespace='sales')),
 ]
