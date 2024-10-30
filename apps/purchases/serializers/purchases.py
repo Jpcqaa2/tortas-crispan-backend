@@ -2,7 +2,6 @@
 from rest_framework import serializers
 
 # Models
-from apps.purchases.models.articles import Articles
 from apps.purchases.models.purchases import Purchases
 
 # Serializers
