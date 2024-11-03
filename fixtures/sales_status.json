@@ -1,0 +1,75 @@
+[
+
+    {
+        "model": "sales.salesstatus",
+        "pk": 1,
+        "fields": {
+            "name": "PAGO CONFIRMADO",
+            "created": "2024-10-02T12:00:00Z",
+            "updated": "2024-10-02T12:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesstatus",
+        "pk": 2,
+        "fields": {
+            "name": "ALISTAMIENTO",
+            "created": "2024-10-02T12:00:00Z",
+            "updated": "2024-10-02T12:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesstatus",
+        "pk": 3,
+        "fields": {
+            "name": "PRODUCCIÓN",
+            "created": "2024-10-02T12:00:00Z",
+            "updated": "2024-10-02T12:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesstatus",
+        "pk": 4,
+        "fields": {
+            "name": "TERMINADO",
+            "created": "2024-10-02T12:00:00Z",
+            "updated": "2024-10-02T12:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesstatus",
+        "pk": 5,
+        "fields": {
+            "name": "DESPACHADO",
+            "created": "2024-10-02T12:00:00Z",
+            "updated": "2024-10-02T12:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesstatus",
+        "pk": 6,
+        "fields": {
+            "name": "ENTREGADO",
+            "created": "2024-10-02T12:00:00Z",
+            "updated": "2024-10-02T12:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesstatus",
+        "pk": 7,
+        "fields": {
+            "name": "CANCELADO",
+            "created": "2024-10-02T12:00:00Z",
+            "updated": "2024-10-02T12:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesstatus",
+        "pk": 8,
+        "fields": {
+            "name": "FINALIZADO",
+            "created": "2024-10-02T12:00:00Z",
+            "updated": "2024-10-02T12:00:00Z"
+        }
+    }
+]

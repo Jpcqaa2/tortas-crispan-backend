@@ -27,7 +27,15 @@ SECRET_KEY = 'django-insecure-&%0^89mk0e*g9s24&cm-)w2*^#y$luy9%c1vjh160=ty&8f4er
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1', 
+    'localhost',
+]
+
+CORS_ALLOWED_ORIGINS = [ 
+    'http://localhost:3000',
+    'https://sisgetc-frontend.vercel.app'
+]
 
 
 # Application definition
@@ -44,6 +52,9 @@ BASE_APPS = [
 LOCAL_APPS = [
      'apps.users.apps.UsersConfig',
      'apps.utils.apps.UtilsConfig',
+     'apps.purchases.apps.PurchasesConfig',
+     'apps.sales.apps.SalesConfig',
+
 ]
 
 THIRD_APPS = [
@@ -53,6 +64,7 @@ THIRD_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'django_filters',
     'drf_yasg',
+    'corsheaders'
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
@@ -68,6 +80,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'tortas-crispan-backend.urls'
@@ -137,6 +151,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+# Ruta para los archivos de medios (por ejemplo, imágenes)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -1,0 +1,15 @@
+[
+    {
+        "model": "sales.salesdetails",
+        "pk": 1,
+        "fields": {
+            "sale": 1,
+            "product": 1,
+            "quantity": 2,
+            "unit_value": "100.00",
+            "subtotal": "200.00",
+            "created": "2024-10-01T10:00:00Z",
+            "updated": "2024-10-01T10:00:00Z"
+        }
+    }
+]

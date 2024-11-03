@@ -1,0 +1,22 @@
+[
+    {
+        "model": "purchases.articletypes",
+        "pk": 1,
+        "fields": {
+            "name": "MATERIALES",
+            "description": "Materiales como moldes, latas, cajas",
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "purchases.articletypes",
+        "pk": 2,
+        "fields": {
+            "name": "INGREDIENTES",
+            "description": "Ingredientes como azucar, huevos, mantequilla",
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    }
+]

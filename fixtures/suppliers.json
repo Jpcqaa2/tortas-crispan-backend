@@ -1,0 +1,16 @@
+[
+    {
+        "model": "purchases.suppliers",
+        "pk": 1,
+        "fields": {
+            "name": "La POPALA",
+            "cell_phone": "3113546789",
+            "email": "lapopala@example.com",
+            "establishment_address": "Calle 40 Avenida Principal",
+            "city": 1,
+            "is_active": true,
+            "created": "2024-10-02T11:30:00Z",
+            "updated": "2024-10-02T11:30:00Z"
+        }
+    }
+]

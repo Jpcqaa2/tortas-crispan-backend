@@ -1,0 +1,46 @@
+[
+    {
+        "model": "purchases.articles",
+        "pk": 1,
+        "fields": {
+            "name": "MOLDES",
+            "presentation": "CAJAS",
+            "article_type": 1,
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "purchases.articles",
+        "pk": 2,
+        "fields": {
+            "name": "HARINA",
+            "presentation": "Bultos",
+            "article_type": 2,
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "purchases.articles",
+        "pk": 3,
+        "fields": {
+            "name": "HUEVOS",
+            "presentation": "Panales",
+            "article_type": 2,
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "purchases.articles",
+        "pk": 4,
+        "fields": {
+            "name": "AZUCAR",
+            "presentation": "Bultos",
+            "article_type": 2,
+            "created": "2024-01-01T00:00:00Z",
+            "updated": "2024-01-01T00:00:00Z"
+        }
+    }
+]

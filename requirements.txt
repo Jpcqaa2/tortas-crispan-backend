@@ -3,6 +3,7 @@ asgiref==3.8.1
 # Django
 Django==4.2.11
 django-extensions==3.2.3
+django-cors-headers==4.5.0
 
 # DRF
 djangorestframework==3.14.0
@@ -24,3 +25,6 @@ setuptools==75.1.0
 
 # Pytest
 pytest-django==4.9.0
+
+# Images
+pillow==11.0.0
