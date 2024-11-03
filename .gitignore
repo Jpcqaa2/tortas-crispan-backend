@@ -174,3 +174,6 @@ __pycache__/
 # Archivos de IDE (VSCode, PyCharm, etc.)
 .vscode/
 .idea/
+
+# Media
+media/

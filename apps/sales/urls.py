@@ -11,6 +11,7 @@ from apps.sales import views
 
 router = DefaultRouter()
 router.register(r'customers', views.CustomerViewSet, basename='customers')
+router.register(r'products', views.ProductViewSet, basename='products')
 
 urlpatterns = [
     path('', include(router.urls)),

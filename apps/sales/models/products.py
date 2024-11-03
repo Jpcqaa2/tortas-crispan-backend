@@ -22,7 +22,10 @@ class Products(DateBaseModel):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=255, null=True, blank=True)
     category = models.ForeignKey('sales.Categories', on_delete=models.CASCADE)
-    photo = models.URLField(max_length=255, null=True, blank=True)
+    photo = models.ImageField(
+        null=True,
+        upload_to='files/products/pictures/'
+    )
     featured_product = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
