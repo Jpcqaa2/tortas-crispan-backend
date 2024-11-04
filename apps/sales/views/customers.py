@@ -32,7 +32,7 @@ class CustomerViewSet(mixins.ListModelMixin,
     API of customers
     """
 
-    queryset = Customers.objects.all()
+    queryset = Customers.objects.filter(is_active=True)
     filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['name', 'identification_number']
 

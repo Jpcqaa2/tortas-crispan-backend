@@ -32,7 +32,7 @@ class ProductViewSet(mixins.ListModelMixin,
     API of products
     """
 
-    queryset = Products.objects.all()
+    queryset = Products.objects.filter(is_active=True)
     filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['name', 'category__name']
     filter_fields = ['measurement_unit', 'category', 'featured_product', 'is_active']
