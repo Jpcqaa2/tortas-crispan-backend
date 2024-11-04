@@ -2,7 +2,6 @@ import pytest
 from django.urls import reverse
 
 # DRF
-from rest_framework.test import APIClient
 from rest_framework import status
 
 # Models
@@ -11,10 +10,6 @@ from apps.users.models.users import User
 
 @pytest.mark.django_db
 class TestAuthFlow:
-
-    @pytest.fixture
-    def client(self):
-        return APIClient()
     
     @pytest.fixture
     def user_data(self):

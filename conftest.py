@@ -1,12 +1,20 @@
 import pytest
 
-from apps.users.models.users import User
 from django.core.management import call_command
+from rest_framework.test import APIClient
+
+from apps.users.models.users import User
+
+
+@pytest.fixture
+def client():
+    return APIClient()
 
 
 @pytest.fixture
 def user_created():
     return User.objects.create_superuser(username='admin', password='admin', email='admin@test.com')
+
 
 @pytest.fixture(scope='session', autouse=True)
 def cargar_datos_bd(django_db_setup, django_db_blocker):
