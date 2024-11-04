@@ -2,7 +2,6 @@ import pytest
 from django.urls import reverse
 
 # DRF
-from rest_framework.test import APIClient
 from rest_framework import status
 
 # Models
@@ -11,15 +10,7 @@ from apps.users.models.users import User
 
 @pytest.mark.django_db
 class TestAuthFlow:
-
-    @pytest.fixture
-    def client(self):
-        return APIClient()
     
-    @pytest.fixture
-    def user_created(self):
-        return User.objects.create_superuser(username='admin', password='admin', email='admin@test.com')
-
     @pytest.fixture
     def user_data(self):
         return {
@@ -57,7 +48,7 @@ class TestAuthFlow:
         response = self.__create_new_user(client, user_data)
         assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
-    def test_user_registration_login(self, client, user_data, user_created):
+    def test_user_registration_login(self, client, user_data, user_created: User):
         """
         Test new user registration using credentials.
         """
@@ -65,7 +56,7 @@ class TestAuthFlow:
         response = self.__create_new_user(client, user_data)
         assert response.status_code == status.HTTP_201_CREATED
 
-    def test_user_login(self, client, user_data, user_created):
+    def test_user_login(self, client, user_data, user_created: User):
         """
         Test login with new registered user.
         """
@@ -77,7 +68,7 @@ class TestAuthFlow:
         assert 'access' in response.data['token']
         assert 'refresh' in response.data['token']
 
-    def test_user_logout(self, client, user_data, user_created):
+    def test_user_logout(self, client, user_data, user_created: User):
         """
         Test logout with new registered user.
         """
