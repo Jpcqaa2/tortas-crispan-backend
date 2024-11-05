@@ -11,6 +11,12 @@ python manage.py collectstatic --no-input
 # Apply any outstanding database migrations
 python manage.py migrate
 
+# Create a default superuser
+python3 manage.py create_superuser_script
+
+# Load Initial Data
+python manage.py runscript poblar_bd
+
 # Translate
 python manage.py makemessages -l es
 python manage.py makemessages -l us
