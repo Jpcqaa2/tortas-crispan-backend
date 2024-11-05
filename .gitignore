@@ -183,4 +183,4 @@ media/
 staticfiles/
 
 # compilemessages
-locale/
+locale/*
