@@ -13,6 +13,22 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from datetime import timedelta
 import os
 from pathlib import Path
+import dj_database_url
+import environ
+from dotenv import load_dotenv
+
+
+load_dotenv()
+# Obtener la ruta completa de la carpeta .envs/
+envs_folder = '.envs/'
+
+for root, dirs, files in os.walk(envs_folder):
+    for dir in dirs:
+        path = envs_folder+dir
+        for env_file in os.listdir(path):
+            load_dotenv(os.path.join(path, env_file), override=True)
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +42,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = 'django-insecure-&%0^89mk0e*g9s24&cm-)w2*^#y$luy9%c1vjh160=ty&8f4er'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Determinar si estamos en modo desarrollo o producción
+DEBUG = env('DEBUG', default=False) == True
 
 ALLOWED_HOSTS = [
     '127.0.0.1', 
@@ -110,13 +127,19 @@ WSGI_APPLICATION = 'tortas-crispan-backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-
+else:
+    DEF_DATABASE_URL=f"postgres://{env('POSTGRES_USER')}:{env('POSTGRES_PASSWORD')}@{env('POSTGRES_HOST')}:{env('POSTGRES_PORT')}/{env('POSTGRES_DB')}"
+    # DATABASES
+    DATABASES = {
+        'default': dj_database_url.config(default=DEF_DATABASE_URL, conn_max_age=600),
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

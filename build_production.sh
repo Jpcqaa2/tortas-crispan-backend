@@ -2,6 +2,9 @@
 # Exit on error
 set -o errexit
 
+# Export the DEBUG variable
+export DEBUG=false
+
 # Modify this line as needed for your package manager (pip, poetry, etc.)
 pip install -r requirements/production.txt
 

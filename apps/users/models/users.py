@@ -25,9 +25,9 @@ class User(DateBaseModel, AbstractUser):
     """
 
     class IdentificationTypeChoices(models.TextChoices):
-        CC = 1, _('CÉDULA DE CIUDADANíA')
-        CE = 2, _('CÉDULA DE EXTRANGERIA')
-        NIT = 3, _('NÚMERO DE IDENTIFICACIÓN TRIBUTARIA')
+        CC = '1', _('CÉDULA DE CIUDADANíA')
+        CE = '2', _('CÉDULA DE EXTRANGERIA')
+        NIT = '3', _('NÚMERO DE IDENTIFICACIÓN TRIBUTARIA')
 
     email = models.EmailField(
         'email address',
