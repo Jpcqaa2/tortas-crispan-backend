@@ -8,7 +8,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import action  
 
-
 # Swagger
 from drf_yasg.utils import swagger_auto_schema
 
@@ -17,7 +16,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 
 # Models y Serializers
-from apps.sales.models import Sales, SalesStatus
+from apps.sales.models import Sales
 from apps.sales.serializers.sales import SalesModelSerializer, UpdateAndCreateSalesSerializer
 
 
@@ -80,20 +79,5 @@ class SalesViewSet(mixins.ListModelMixin,
     @transaction.atomic
     def perform_destroy(self, instance):
         """Soft delete the sale record."""
-        canceled_status = SalesStatus.objects.get(name='CANCELADO')
-        instance.sale_status = canceled_status
         instance.is_active = False
         instance.save()
-
-    @action(detail=False, methods=['get'])
-    def all_sales(self, request):
-        """Retrieve all sales, including inactive ones."""
-        include_inactive = request.query_params.get('include_inactive', 'false').lower() == 'true'
-        
-        if include_inactive:
-            queryset = Sales.objects.all()  # Todas las ventas, activas e inactivas
-        else:
-            queryset = Sales.objects.exclude(sale_status_id=7)  # Solo las ventas activas
-        
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)

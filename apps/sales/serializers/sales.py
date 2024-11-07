@@ -37,12 +37,6 @@ class UpdateAndCreateSalesDetailsSerializer(serializers.ModelSerializer):
         exclude = ('sale',)
 
 
-class UpdateAndCreateSalesDetailsSerializer(serializers.ModelSerializer):
-    unit_value = serializers.DecimalField(max_digits=10, decimal_places=2, required=True)
-
-    class Meta:
-        model = SalesDetails
-        exclude = ('sale',)
 
 
 class UpdateAndCreateSalesSerializer(serializers.ModelSerializer):
@@ -78,7 +72,7 @@ class UpdateAndCreateSalesSerializer(serializers.ModelSerializer):
         total = 0
         for detail_data in sale_details_data:
             detail_data['sale'] = sale
-            detail_data['subtotal'] = detail_data['quantity'] * detail_data['unit_value']  # Cambia price a unit_value
+            detail_data['subtotal'] = detail_data['quantity'] * detail_data['unit_value'] 
             sale_detail = SalesDetails.objects.create(**detail_data)
             total += sale_detail.subtotal
         return total

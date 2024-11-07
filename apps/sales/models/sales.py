@@ -19,7 +19,8 @@ class Sales(DateBaseModel):
     )
     sale_status = models.ForeignKey('sales.SalesStatus', on_delete=models.PROTECT)
     total = models.DecimalField(max_digits=12, decimal_places=2, default=0)
-
+    is_active = models.BooleanField(default=True)
+    
     def __str__(self):
         return f"Venta #{self.id} - Cliente: {self.customer.name} - Total: ${self.total}"
 
