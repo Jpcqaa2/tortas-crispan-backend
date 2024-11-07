@@ -31,7 +31,7 @@ class SalesViewSet(mixins.ListModelMixin,
     API for managing sales.
     """
 
-    queryset = Sales.objects.exclude(sale_status_id=7)
+    queryset = Sales.objects.filter(is_active=True)
     filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['customer__name', 'user__username']
     
