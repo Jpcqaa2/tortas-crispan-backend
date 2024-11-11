@@ -19,9 +19,6 @@ from apps.purchases.models.purchases import Purchases
 from apps.purchases.serializers.purchases import PurchasesModelSerializer, UpdateAndCreatePurchasesSerializer
 
 
-@method_decorator(name='partial_update', decorator=swagger_auto_schema(
-    auto_schema=None
-))
 class PurchaseViewSet(mixins.ListModelMixin, 
                   mixins.CreateModelMixin,
                   mixins.UpdateModelMixin,

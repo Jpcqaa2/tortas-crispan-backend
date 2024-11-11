@@ -22,7 +22,10 @@ class DataChoiceSerializer(serializers.SerializerMethodField):
         }
 
 
-class DataSerializer(serializers.BaseSerializer):
+class DataSerializer(serializers.Serializer):
+    value = serializers.IntegerField(help_text="ID", read_only=True)
+    label = serializers.CharField(help_text="Name", read_only=True)
+
     def to_representation(self, instance):
         return {
             'value': instance.pk,
