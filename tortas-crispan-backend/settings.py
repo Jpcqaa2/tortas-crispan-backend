@@ -35,6 +35,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+DEBUG = env('DJANGO_DEBUG', default=True)
+
+PRODUCTION = not DEBUG
+
+if PRODUCTION:
+    print("*** Currently runnig PRODUCTION ***")
+else:
+    print("*** Currently runnig LOCAL ***")
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -83,7 +93,8 @@ THIRD_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'django_filters',
     'drf_yasg',
-    'corsheaders'
+    'corsheaders',
+    'storages'
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
@@ -124,22 +135,49 @@ TEMPLATES = [
 WSGI_APPLICATION = 'tortas-crispan-backend.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+if PRODUCTION:  
+    # Database
+    DEF_DATABASE_URL=f"postgres://{env('POSTGRES_USER')}:{env('POSTGRES_PASSWORD')}@{env('POSTGRES_HOST')}:{env('POSTGRES_PORT')}/{env('POSTGRES_DB')}"
+    DATABASES = {
+        'default': dj_database_url.config(default=DEF_DATABASE_URL, conn_max_age=600),
+    }
 
-if DEBUG:
+    # AWS
+    AWS_ACCESS_KEY_ID = env('DJANGO_AWS_ACCESS_KEY_ID', default="")
+    AWS_SECRET_ACCESS_KEY = env('DJANGO_AWS_SECRET_ACCESS_KEY', default="")
+    AWS_DEFAULT_REGION = env('DJANGO_AWS_DEFAULT_REGION', default="")
+    AWS_STORAGE_BUCKET_NAME = env('DJANGO_AWS_STORAGE_BUCKET_NAME', default="")
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_DEFAULT_REGION}.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+
+    # Configuración para archivos estáticos
+    STATIC_LOCATION = 'static'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+    # Configuración para archivos de medios
+    MEDIA_LOCATION = 'media'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+else:
+    # Database
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-else:
-    DEF_DATABASE_URL=f"postgres://{env('POSTGRES_USER')}:{env('POSTGRES_PASSWORD')}@{env('POSTGRES_HOST')}:{env('POSTGRES_PORT')}/{env('POSTGRES_DB')}"
-    # DATABASES
-    DATABASES = {
-        'default': dj_database_url.config(default=DEF_DATABASE_URL, conn_max_age=600),
-    }
+
+    # Configuración para archivos estáticos
+    STATIC_URL = 'static/'
+
+    # Configuración para archivos de medios
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -171,16 +209,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
-
-
-# Ruta para los archivos de medios (por ejemplo, imágenes)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
