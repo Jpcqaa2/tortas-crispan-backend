@@ -51,6 +51,7 @@ urlpatterns = [
     path('', include(('apps.users.urls', 'users'), namespace='users')),
     path('', include(('apps.purchases.urls', 'purchases'), namespace='purchases')),
     path('', include(('apps.sales.urls', 'sales'), namespace='sales')),
+    path('', include(('apps.utils.urls', 'utils'), namespace='utils')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
