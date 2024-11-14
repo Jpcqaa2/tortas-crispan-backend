@@ -35,8 +35,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# Determinar si estamos en modo desarrollo o producción
 DEBUG = env('DJANGO_DEBUG', default=True)
-
 PRODUCTION = not DEBUG
 
 if PRODUCTION:
@@ -50,10 +50,6 @@ else:
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&%0^89mk0e*g9s24&cm-)w2*^#y$luy9%c1vjh160=ty&8f4er'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-# Determinar si estamos en modo desarrollo o producción
-DEBUG = env('DEBUG', default=False) == True
 
 ALLOWED_HOSTS = [
     '127.0.0.1', 
