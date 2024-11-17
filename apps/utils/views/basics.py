@@ -7,12 +7,15 @@ from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 
+from apps.purchases.models.article_types import ArticleTypes
 from apps.purchases.models.articles import Articles
 from apps.purchases.models.suppliers import Suppliers
-from apps.sales.models.customers import Customers
+from apps.sales.models.categories import Categories
+from apps.sales.models.customers import Customers, IdentificationTypeChoices
 from apps.sales.models.products import Products
 from apps.utils.constants import MeasurementUnitChoices, PaymentMethodChoices
 from apps.utils.filters import ArticlesBasicFilter, CustomersBasicFilter, ProductsBasicFilter, SuppliersBasicFilter
+from apps.utils.models.cities import City
 from apps.utils.serializers.globals import DataSerializer
 
 
@@ -64,6 +67,21 @@ class ProductsList(generics.ListAPIView):
     filterset_class = ProductsBasicFilter
 
 
+class CategoryList(generics.ListAPIView):
+    """ List Categories
+
+    This API return information about all categories registrered in the system.
+
+    You can filter o searh by all parameters described below:
+    """
+    queryset = Categories.objects.all()
+    pagination_class = None
+    serializer_class = DataSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [SearchFilter, DjangoFilterBackend]
+    search_fields = ['^id', 'name']
+
+
 class ArticlesList(generics.ListAPIView):
     """ List Articles
 
@@ -78,6 +96,37 @@ class ArticlesList(generics.ListAPIView):
     filter_backends = [SearchFilter, DjangoFilterBackend]
     search_fields = ['^id', 'name', 'presentation']
     filterset_class = ArticlesBasicFilter
+
+
+class ArticleTypesList(generics.ListAPIView):
+    """ List Article Types
+
+    This API return information about all article types registrered in the system.
+
+    You can filter o searh by all parameters described below:
+    """
+    queryset = ArticleTypes.objects.all()
+    pagination_class = None
+    serializer_class = DataSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [SearchFilter, DjangoFilterBackend]
+    search_fields = ['^id', 'name']
+
+
+class CitiesList(generics.ListAPIView):
+    """ List Cities
+
+    This API return information about all cities registrered in the system.
+
+    You can filter o searh by all parameters described below:
+    """
+    queryset = City.objects.all()
+    pagination_class = None
+    serializer_class = DataSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [SearchFilter, DjangoFilterBackend]
+    search_fields = ['^id', 'name']
+
 
 
 class PaymentMethodList(generics.ListAPIView):
@@ -112,3 +161,21 @@ class MeasurementUnitList(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         data = [{'value': value, 'label': label} for value, label in MeasurementUnitChoices.choices]
         return Response(data)
+    
+
+class IdentificationTypesList(generics.ListAPIView):
+    """ List Identification Types
+
+    This API return information about all identification types configured in the system.
+
+    You can filter o searh by all parameters described below:
+    """
+    queryset = None
+    pagination_class = None
+    serializer_class = DataSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        data = [{'value': value, 'label': label} for value, label in IdentificationTypeChoices.choices]
+        return Response(data)
+    

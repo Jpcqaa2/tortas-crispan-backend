@@ -12,4 +12,8 @@ urlpatterns = [
     path(r'basics/suppliers/', basics.SuppliersList.as_view(), name="basics_suppliers"),
     path(r'basics/payment_methods/', basics.PaymentMethodList.as_view(), name="basics_payment_methods"),
     path(r'basics/measurement_units/', basics.MeasurementUnitList.as_view(), name="basics_measurement_unit"),
+    path(r'basics/identification_types/', basics.IdentificationTypesList.as_view(), name="basics_identification_types"),
+    path(r'basics/cities/', basics.CitiesList.as_view(), name="basics_cities"),
+    path(r'basics/article_types/', basics.ArticleTypesList.as_view(), name="basics_article_types"),
+    path(r'basics/categories/', basics.CategoryList.as_view(), name="basics_categories"),
 ]
