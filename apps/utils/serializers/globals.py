@@ -3,6 +3,9 @@
 # Django REST Framework
 from rest_framework import serializers
 
+from django.utils.encoding import force_str
+from django.db.models import Case, CharField, Value, When
+
 
 class DataChoiceSerializer(serializers.SerializerMethodField):
     """
@@ -31,3 +34,12 @@ class DataSerializer(serializers.Serializer):
             'value': instance.pk,
             'label': instance.name
         }
+    
+
+class WithChoicesSerializer(Case):
+    def __init__(self, model, field, field_sub_table=None, condition=None, then=None, **lookups):
+        choices = dict(model._meta.get_field(field).flatchoices)
+        if field_sub_table is not None:
+            field = field_sub_table
+        whens = [When(**{field: k, 'then': Value(force_str(v))}) for k, v in choices.items()]
+        return super().__init__(*whens, output_field=CharField())
