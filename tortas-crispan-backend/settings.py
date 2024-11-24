@@ -79,6 +79,7 @@ LOCAL_APPS = [
      'apps.utils.apps.UtilsConfig',
      'apps.purchases.apps.PurchasesConfig',
      'apps.sales.apps.SalesConfig',
+     'apps.reports.apps.ReportsConfig',
 
 ]
 
