@@ -26,7 +26,7 @@ class CustomersList(generics.ListAPIView):
 
     You can filter o searh by all parameters described below:
     """
-    queryset = Customers.objects.all()
+    queryset = Customers.objects.filter(is_active=True)
     pagination_class = None
     serializer_class = DataSerializer
     permission_classes = [IsAuthenticated]
@@ -42,7 +42,7 @@ class SuppliersList(generics.ListAPIView):
 
     You can filter o searh by all parameters described below:
     """
-    queryset = Suppliers.objects.all()
+    queryset = Suppliers.objects.filter(is_active=True)
     pagination_class = None
     serializer_class = DataSerializer
     permission_classes = [IsAuthenticated]
@@ -58,7 +58,7 @@ class ProductsList(generics.ListAPIView):
 
     You can filter o searh by all parameters described below:
     """
-    queryset = Products.objects.all()
+    queryset = Products.objects.filter(is_active=True)
     pagination_class = None
     serializer_class = DataSerializer
     permission_classes = [IsAuthenticated]
@@ -89,7 +89,7 @@ class ArticlesList(generics.ListAPIView):
 
     You can filter o searh by all parameters described below:
     """
-    queryset = Articles.objects.all()
+    queryset = Articles.objects.filter(is_active=True)
     pagination_class = None
     serializer_class = DataSerializer
     permission_classes = [IsAuthenticated]
