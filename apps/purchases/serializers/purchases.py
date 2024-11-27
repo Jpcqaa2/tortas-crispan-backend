@@ -1,3 +1,5 @@
+from datetime import date
+
 # Django REST Framework
 from rest_framework import serializers
 
@@ -48,6 +50,7 @@ class UpdateAndCreatePurchasesDetailsModelSerializer(serializers.ModelSerializer
 class UpdateAndCreatePurchasesSerializer(serializers.ModelSerializer):
     purchase_details = UpdateAndCreatePurchasesDetailsModelSerializer(many=True, required=True)
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    purchase_date = serializers.DateField(default=date.today)
    
     class Meta:
         """Meta class."""

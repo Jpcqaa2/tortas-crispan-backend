@@ -8,8 +8,60 @@
             "quantity": 2,
             "unit_value": "100.00",
             "subtotal": "200.00",
-            "created": "2024-10-01T10:00:00Z",
-            "updated": "2024-10-01T10:00:00Z"
+            "created": "2024-11-01T10:00:00Z",
+            "updated": "2024-11-01T10:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesdetails",
+        "pk": 2,
+        "fields": {
+            "sale": 2,
+            "product": 2,
+            "quantity": 3,
+            "unit_value": "100.00",
+            "subtotal": "300.00",
+            "created": "2024-11-05T12:30:00Z",
+            "updated": "2024-11-05T12:30:00Z"
+        }
+    },
+    {
+        "model": "sales.salesdetails",
+        "pk": 3,
+        "fields": {
+            "sale": 3,
+            "product": 3,
+            "quantity": 5,
+            "unit_value": "100.00",
+            "subtotal": "500.00",
+            "created": "2024-11-10T15:00:00Z",
+            "updated": "2024-11-10T15:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesdetails",
+        "pk": 4,
+        "fields": {
+            "sale": 4,
+            "product": 1,
+            "quantity": 1,
+            "unit_value": "150.00",
+            "subtotal": "150.00",
+            "created": "2024-11-12T11:00:00Z",
+            "updated": "2024-11-12T11:00:00Z"
+        }
+    },
+    {
+        "model": "sales.salesdetails",
+        "pk": 5,
+        "fields": {
+            "sale": 5,
+            "product": 2,
+            "quantity": 2,
+            "unit_value": "225.00",
+            "subtotal": "450.00",
+            "created": "2024-11-15T14:45:00Z",
+            "updated": "2024-11-15T14:45:00Z"
         }
     }
 ]

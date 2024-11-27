@@ -8,8 +8,60 @@
             "payment_method": "1",
             "sale_status": 1,
             "total": "200.00",
-            "created": "2024-10-01T10:00:00Z",
-            "updated": "2024-10-01T10:00:00Z"
+            "created": "2024-11-01T10:00:00Z",
+            "updated": "2024-11-01T10:00:00Z"
+        }
+    },
+    {
+        "model": "sales.sales",
+        "pk": 2,
+        "fields": {
+            "customer": 2,
+            "user": 1,
+            "payment_method": "2",
+            "sale_status": 2,
+            "total": "350.00",
+            "created": "2024-11-05T12:30:00Z",
+            "updated": "2024-11-05T12:30:00Z"
+        }
+    },
+    {
+        "model": "sales.sales",
+        "pk": 3,
+        "fields": {
+            "customer": 3,
+            "user": 1,
+            "payment_method": "3",
+            "sale_status": 3,
+            "total": "500.00",
+            "created": "2024-11-10T15:00:00Z",
+            "updated": "2024-11-10T15:00:00Z"
+        }
+    },
+    {
+        "model": "sales.sales",
+        "pk": 4,
+        "fields": {
+            "customer": 4,
+            "user": 1,
+            "payment_method": "1",
+            "sale_status": 1,
+            "total": "150.00",
+            "created": "2024-11-12T11:00:00Z",
+            "updated": "2024-11-12T11:00:00Z"
+        }
+    },
+    {
+        "model": "sales.sales",
+        "pk": 5,
+        "fields": {
+            "customer": 5,
+            "user": 1,
+            "payment_method": "2",
+            "sale_status": 2,
+            "total": "450.00",
+            "created": "2024-11-15T14:45:00Z",
+            "updated": "2024-11-15T14:45:00Z"
         }
     }
 ]
