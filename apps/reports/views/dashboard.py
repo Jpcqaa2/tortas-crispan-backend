@@ -43,7 +43,7 @@ class DashboardReportsViewset(GenericViewSet):
                     'compras': openapi.Schema(type=openapi.TYPE_INTEGER),
                     'total_compras': openapi.Schema(type=openapi.TYPE_NUMBER),
                     'utilidad': openapi.Schema(type=openapi.TYPE_NUMBER),
-                    'clientes_nuevos_del_mes': openapi.Schema(type=openapi.TYPE_INTEGER),
+                    'clientes_nuevos': openapi.Schema(type=openapi.TYPE_INTEGER),
                     'todos_los_clientes': openapi.Schema(type=openapi.TYPE_INTEGER),
                 }
             )
