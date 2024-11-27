@@ -10,7 +10,7 @@ from rest_framework.routers import DefaultRouter
 from apps.reports import views
 
 router = DefaultRouter()
-router.register(r'reports', views.SalesReportsViewset, basename='reports')
+router.register(r'reports/sales', views.SalesReportsViewset, basename='reports')
 
 urlpatterns = [
     path('', include(router.urls)),

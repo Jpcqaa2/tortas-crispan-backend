@@ -4,9 +4,9 @@ from django_filters.rest_framework import DateFilter
 
 
 class SalesReportFilter(filters.FilterSet):
-    start_date = DateFilter(field_name='created', lookup_expr='gte')
-    end_date = DateFilter(field_name='created', lookup_expr='lte')
+    start_date = DateFilter(field_name='sale_date', lookup_expr='gte')
+    end_date = DateFilter(field_name='sale_date', lookup_expr='lte')
 
     class Meta:
         model = Sales
-        fields=['created']
+        fields=['sale_date']
