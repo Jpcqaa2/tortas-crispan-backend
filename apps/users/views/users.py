@@ -34,7 +34,7 @@ class UserViewSet(mixins.ListModelMixin,
     API of users
     """
 
-    queryset = User.objects.all()
+    queryset = User.objects.filter(is_active=True)
     filter_backends = [DjangoFilterBackend]
     filterset_class = UsersFilter
 

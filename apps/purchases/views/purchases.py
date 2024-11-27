@@ -30,7 +30,7 @@ class PurchaseViewSet(mixins.ListModelMixin,
     API of purchases
     """
 
-    queryset = Purchases.objects.all()
+    queryset = Purchases.objects.filter(is_active=True)
     filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['supplier__name']
     filterset_class = PurchasesFilter
