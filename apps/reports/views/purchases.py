@@ -78,7 +78,7 @@ class PurchaseReportsViewset(GenericViewSet):
         reporte['total_compra'] = reporte['total_compra'].mask(reporte.duplicated(subset=['id']))
 
         order_columns = ['id', 'proveedor', 'fecha', 'descripcion', 'metodo_pago', 'tipo_articulo',
-                         'articulo', 'cantidad', 'unidad_medida', 'precio_unitario', 'subtotal', 'total_compra']
+                         'articulo', 'cantidad', 'precio_unitario', 'subtotal', 'total_compra']
         reporte = reporte[order_columns]
 
         if serializer_data.get('response_format') == ReportResponseFormatChoices.EXCEL:
