@@ -1,7 +1,5 @@
 
-
 import io
-
 import pandas as pd
 
 
@@ -21,3 +19,11 @@ def df_to_excel(df, sheet_name):
     sio.seek(0)
     workbook = sio.getvalue()
     return workbook
+
+
+def format_currency(value):
+    # Formatear como moneda estándar y luego ajustar separadores
+    formatted = f"${value:,.2f}"  # $2,666,000.00
+    parts = formatted.split(".")  # Separar la parte entera y decimal
+    integer_part = parts[0].replace(",", ".")  # Cambiar separadores de miles
+    return f"{integer_part},{parts[1]}" 
