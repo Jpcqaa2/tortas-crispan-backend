@@ -1,5 +1,6 @@
 # Django
 from django.http import HttpResponse
+from django.http import JsonResponse
 
 # Django Rest Framework
 from rest_framework import status
@@ -21,10 +22,11 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 
 # Models
+from apps.reports.constant import ReportResponseFormatChoices
 from apps.reports.filters import SalesReportFilter
 from apps.reports.serializers.sales import SalesReportSerializer
 from apps.sales.models.sales import Sales
-from apps.utils.logic.reports import size_column_excel
+from apps.utils.logic.reports import df_to_excel, format_currency
 from apps.utils.serializers.globals import WithChoicesSerializer
 
 
@@ -71,8 +73,12 @@ class SalesReportsViewset(GenericViewSet):
         if not queryset.exists():
             raise ValidationError({'detail': ['No existen datos para las fechas dadas.']})
 
-        sio = io.BytesIO()
         reporte = read_frame(queryset)
+
+         # Formato moneda
+        reporte['precio_unitario'] = reporte['precio_unitario'].apply(format_currency)
+        reporte['subtotal'] = reporte['subtotal'].apply(format_currency)
+        reporte['total_venta'] = reporte['total_venta'].apply(format_currency)
 
         # Establecer todas las filas de 'total_venta' a NaN excepto la primera fila de cada venta (mismo 'id')
         reporte['total_venta'] = reporte['total_venta'].mask(reporte.duplicated(subset=['id']))
@@ -81,14 +87,12 @@ class SalesReportsViewset(GenericViewSet):
                          'producto', 'cantidad', 'precio_unitario', 'subtotal', 'total_venta']
         reporte = reporte[order_columns]
 
-        excel = pd.ExcelWriter(sio, engine='xlsxwriter')
-        reporte.to_excel(excel, sheet_name="reporte_general_de_ventas", index=False)
-        size_column_excel(excel, reporte, 'reporte_general_de_ventas')
-
-        excel.close()
-        sio.seek(0)
-        workbook = sio.getvalue()
-
-        response = HttpResponse(workbook, content_type="application/ms-excel")
-        response['Content-Disposition'] = 'attachment; filename=reporte_general_de_ventas.xlsx'
-        return response
+        if serializer_data.get('response_format') == ReportResponseFormatChoices.EXCEL:
+            workbook = df_to_excel(reporte, sheet_name="reporte_general_de_ventas")
+            response = HttpResponse(workbook, content_type="application/ms-excel")
+            response['Content-Disposition'] = 'attachment; filename=reporte_general_de_ventas.xlsx'
+            return response
+        
+        reporte = reporte.fillna('')
+        json_data = reporte.to_dict(orient='records')
+        return JsonResponse(json_data, safe=False)
