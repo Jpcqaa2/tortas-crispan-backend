@@ -26,7 +26,7 @@ from apps.reports.constant import ReportResponseFormatChoices
 from apps.reports.filters import SalesReportFilter
 from apps.reports.serializers.sales import SalesReportSerializer
 from apps.sales.models.sales import Sales
-from apps.utils.logic.reports import df_to_excel
+from apps.utils.logic.reports import df_to_excel, format_currency
 from apps.utils.serializers.globals import WithChoicesSerializer
 
 
@@ -76,9 +76,9 @@ class SalesReportsViewset(GenericViewSet):
         reporte = read_frame(queryset)
 
          # Formato moneda
-        reporte['precio_unitario'] = reporte['precio_unitario'].apply(lambda x: f"${x:,.2f}")
-        reporte['subtotal'] = reporte['subtotal'].apply(lambda x: f"${x:,.2f}")
-        reporte['total_venta'] = reporte['total_venta'].apply(lambda x: f"${x:,.2f}")
+        reporte['precio_unitario'] = reporte['precio_unitario'].apply(format_currency)
+        reporte['subtotal'] = reporte['subtotal'].apply(format_currency)
+        reporte['total_venta'] = reporte['total_venta'].apply(format_currency)
 
         # Establecer todas las filas de 'total_venta' a NaN excepto la primera fila de cada venta (mismo 'id')
         reporte['total_venta'] = reporte['total_venta'].mask(reporte.duplicated(subset=['id']))
