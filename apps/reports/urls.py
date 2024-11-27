@@ -12,6 +12,8 @@ from apps.reports import views
 router = DefaultRouter()
 router.register(r'reports/sales', views.SalesReportsViewset, basename='reports_sales')
 router.register(r'reports/dashboard', views.DashboardReportsViewset, basename='reports_dashboard')
+router.register(r'reports/purchases', views.PurchaseReportsViewset, basename='reports_purchases')
+
 
 urlpatterns = [
     path('', include(router.urls)),
