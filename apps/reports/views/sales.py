@@ -55,7 +55,7 @@ class SalesReportsViewset(GenericViewSet):
         queryset = Sales.objects\
             .filter(is_active=True)\
             .annotate(
-                fecha=F('created__date'), 
+                fecha=F('sale_date'), 
                 metodo_pago=WithChoicesSerializer(Sales, 'payment_method'),
                 estado=F('sale_status__name'),
                 cliente=F('customer__name'),

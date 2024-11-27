@@ -1,3 +1,4 @@
+from datetime import date
 
 from rest_framework import serializers
 from apps.sales.models import Sales, SalesDetails
@@ -42,6 +43,7 @@ class UpdateAndCreateSalesDetailsSerializer(serializers.ModelSerializer):
 class UpdateAndCreateSalesSerializer(serializers.ModelSerializer):
     sale_details = UpdateAndCreateSalesDetailsSerializer(many=True, required=True)
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    sale_date = serializers.DateField(default=date.today)
 
     class Meta:
         model = Sales
