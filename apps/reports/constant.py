@@ -7,3 +7,8 @@ class SalesReportTypeChoices(models.TextChoices):
     GATEGORY = 'GATEGORY', _('POR CATEGORIAS')
     PRODUCT = 'PRODUCT', _('POR PRODUCTOS')
     CUSTOMER = 'CUSTOMER', _('CLIENTE')
+
+
+class ReportResponseFormatChoices(models.TextChoices):
+    JSON = 'JSON'
+    EXCEL = 'EXCEL'
