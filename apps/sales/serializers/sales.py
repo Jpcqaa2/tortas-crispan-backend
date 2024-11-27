@@ -38,8 +38,6 @@ class UpdateAndCreateSalesDetailsSerializer(serializers.ModelSerializer):
         exclude = ('sale',)
 
 
-
-
 class UpdateAndCreateSalesSerializer(serializers.ModelSerializer):
     sale_details = UpdateAndCreateSalesDetailsSerializer(many=True, required=True)
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
