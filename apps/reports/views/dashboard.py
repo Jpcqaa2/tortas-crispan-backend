@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from django.db.models import Sum
 from django.utils.timezone import now
 from datetime import datetime
+from apps.utils.logic.reports import format_currency
+
 
 # Django Rest Framework
 from rest_framework import status
@@ -79,10 +81,10 @@ class DashboardReportsViewset(GenericViewSet):
         # Respuesta
         data = {
             "ventas": ventas_mes.count(),
-            "total_ventas": total_ventas,
+            "total_ventas": format_currency(total_ventas),
             "compras": compras_mes.count(),
-            "total_compras": total_compras,
-            "utilidad": utilidad,
+            "total_compras": format_currency(total_compras),
+            "utilidad": format_currency(utilidad),
             "clientes_nuevos": clientes_nuevos,
             "todos_los_clientes": total_clientes,
         }
